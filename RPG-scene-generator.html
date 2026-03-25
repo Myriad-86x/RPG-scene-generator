@@ -83,26 +83,35 @@
     <div id="card-container"></div>
 
     <script>
-        // Dynaaminen latausfunktio
-        async function loadAndGenerate(type) {
-            const selectId = `select-${type}`;
-            const fileUrl = document.getElementById(selectId).value;
+        // Globaali muuttuja, johon tiedostot lataavat itsensä
+        window.tempData = null;
 
-            try {
-                const response = await fetch(fileUrl);
-                if (!response.ok) throw new Error("Tiedostoa ei löytynyt");
-                
-                // Käsitellään JS-tiedosto tekstinä ja muutetaan se JSON-objektiksi
-                const text = await response.text();
-                // Poistetaan mahdolliset 'const nimi =' alusta, jos niitä jäi
-                const jsonString = text.substring(text.indexOf('['));
-                const list = JSON.parse(jsonString);
+        function loadAndGenerate(type) {
+            const fileUrl = document.getElementById(`select-${type}`).value;
 
-                createCard(type, list);
-            } catch (err) {
-                alert("Virhe ladattaessa tietokantaa: " + fileUrl + "\n(Varmista, että tiedosto on olemassa)");
-                console.error(err);
-            }
+            // Poistetaan vanha lataus-skripti jos sellainen on
+            const oldScript = document.getElementById('data-loader');
+            if (oldScript) oldScript.remove();
+
+            // Luodaan uusi script-elementti tiedoston lataamiseksi
+            const script = document.createElement('script');
+            script.id = 'data-loader';
+            script.src = fileUrl;
+
+            script.onload = () => {
+                if (window.tempData) {
+                    createCard(type, window.tempData);
+                    window.tempData = null; // Tyhjennetään seuraavaa latausta varten
+                } else {
+                    alert("Tiedosto latautui, mutta se ei sisältänyt 'tempData' -muuttujaa!");
+                }
+            };
+
+            script.onerror = () => {
+                alert("Tiedostoa ei löytynyt: " + fileUrl);
+            };
+
+            document.head.appendChild(script);
         }
 
         function createCard(type, list) {
