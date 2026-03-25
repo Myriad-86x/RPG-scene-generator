@@ -1,4 +1,4 @@
-const ansat = [
+[
     {
         name: "Myrkkynuoli-ansa", img: "🏹", desc: "Lattiaan piilotettu painolevy.",
         dc: 15, effect: "2d6 myrkkyvahinkoa",
