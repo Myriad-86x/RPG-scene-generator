@@ -38,8 +38,10 @@
         <!-- Sijainnit -->
         <div class="control-group">
             <select id="select-location">
-                <option value="data/sijainnit_perus.js">Perusluolat</option>
+                <option value="data/sijainnit.js">Perusluolat</option>
+                <!--
                 <option value="data/sijainnit_kaupunki.js">Kaupunki</option>
+                -->
             </select>
             <button class="btn-loc" onclick="loadAndGenerate('location')">📍 Sijainti</button>
         </div>
@@ -47,8 +49,10 @@
         <!-- Viholliset -->
         <div class="control-group">
             <select id="select-enemy">
-                <option value="data/viholliset_taso1.js">Taso 1-3</option>
+                <option value="data/viholliset.js">Taso 1-3</option>
+                <!--
                 <option value="data/viholliset_bossit.js">Pomovastukset</option>
+                -->
             </select>
             <button class="btn-enemy" onclick="loadAndGenerate('enemy')">⚔️ Vihollinen</button>
         </div>
@@ -56,8 +60,10 @@
         <!-- Ansat -->
         <div class="control-group">
             <select id="select-trap">
-                <option value="data/ansat_helppo.js">Helpot ansat</option>
+                <option value="data/ansat.js">Helpot ansat</option>
+                <!--
                 <option value="data/ansat_tappavat.js">Tappavat</option>
+                -->
             </select>
             <button class="btn-trap" onclick="loadAndGenerate('trap')">⚠️ Ansa</button>
         </div>
@@ -65,8 +71,10 @@
         <!-- Loot -->
         <div class="control-group">
             <select id="select-loot">
-                <option value="data/esineet_yleiset.js">Yleiset tavarat</option>
+                <option value="data/esineet.js">Yleiset tavarat</option>
+                <!-- 
                 <option value="data/esineet_harvinaiset.js">Aarteet</option>
+                -->
             </select>
             <button class="btn-loot" onclick="loadAndGenerate('loot')">💎 Loot</button>
         </div>
