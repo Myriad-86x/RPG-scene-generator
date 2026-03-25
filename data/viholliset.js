@@ -5,4 +5,4 @@
         stats: { voi: 14, ket: 10, sit: 12, äly: 8, vii: 7, kar: 6 },
         actions: "Miekka-isku: +4 osumiseen."
     }
-];
+]
